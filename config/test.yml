@@ -1,0 +1,4 @@
+adapter: sqlite3
+database: db/test.sqlite3
+pool: 10
+timeout: 5000

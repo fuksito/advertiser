@@ -1,0 +1,114 @@
+<!-- Templates -->
+
+<script type="text/template" id="campaign-template">
+  <div class="view">
+    <a class="destroy btn btn-danger">Destroy</a>
+    <a class="edit btn">Edit</a>
+    <label><?= title ?></label>
+  </div>
+</script>
+
+<script type="text/template" id="grid-template">
+  <div id='grid' class='grid'>
+    <button id="#add_campaign" class='add_campaign btn btn-success'>Add Campaign</button>
+    <h2>Campaigns List</h2>
+    <ul id='campaign_list'></ul>
+
+    <div class="counter">
+      
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="campaign-form">
+  <div class="heading">
+    <? if(typeof(id) != 'undefined'){ ?>
+      <h1 class='edit_campaign'>Edit Campaign</h1>
+    <? } else { ?>
+      <h1 class='new_campaign'>New Campaign</h1>
+    <? } ?>
+  </div>
+  <div class="view form_holder">
+    
+    <form id="campaign_form">
+
+    <div class="input_holder">    
+      <label>Title</label>
+      <input type='text' name='title' value="<?= title ?>" />
+      <span class='err_msg' id='title_err_msg'></span>
+    </div>
+
+      <div class="input_holder">
+        
+        <label class='date_label'>Starts at</label>
+        <input type='text' name='starts_at_date' value="<?= starts_at_date ?>" class='datepicker' size='12' placeholder='YYYY-MM-DD' />
+        <input type='text' name='starts_at_time' value="<?= starts_at_time ?>" size='5' placeholder='HH:MM' />
+        <span class='err_msg' id='starts_at_date_err_msg'></span>
+
+      </div>
+
+      <div class="input_holder">
+        
+        <label class='date_label'>Ends at</label>
+        <input type='text' name='ends_at_date' value="<?= ends_at_date ?>" class='datepicker' size='12' placeholder='YYYY-MM-DD' />
+        <input type='text' name='ends_at_time' value="<?= ends_at_time ?>" size='5' placeholder='HH:MM' />
+        <span class='err_msg' id='ends_at_date_err_msg'></span>
+        
+      </div>
+      
+
+
+    <div class="input_holder">
+      <label>Time Zone</label>
+      <select name='time_zone'>
+        <% ActiveSupport::TimeZone.zones_map.each do |name, long| %>
+          <option value="<%= name %>" <? if(time_zone == "<%= name %>"){ print('selected') } ?> ><%= long %></option>
+        <% end %>
+      </select>
+    </div>
+
+    </form>
+    
+
+    <div id='countries_table'>
+    
+        <h2>Countries</h2>
+        <div class="input_holder country_add">
+          <label>Add</label>
+          <input type='text' id='new_country_name' class='new_country_name' placeholder='New Country Name' />
+        </div>
+
+        <table class='countries_table striped_table'>
+          <thead>
+            <tr>
+              <th style='width:200px;border-right:1px solid #555'>Country Name</th>
+              <th>Languages separated by comma</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+          </tbody>
+        </table>
+    </div>
+
+    <div class="actions">
+      <button class='submit btn btn-success btn-large'>
+        <? if (typeof(id) == 'undefined' ){ ?>
+          Create Campaign
+        <? } else { ?>
+          Save Campaign
+        <? } ?>
+      </button>
+      <span>or</span> <a class='cancel' href='/'>cancel</a>
+    </div>
+    <br clear='all' />
+  </div>
+</script>
+
+<script type="text/template" id="country-td-template">
+    <th><?= title ?></th>
+    <td class='languages'><input type='text' name='languages[<?= title ?>]' value='<?= languages.join(', ') ?>' /></td>
+</script>
+
+<!-- / Templates -->
