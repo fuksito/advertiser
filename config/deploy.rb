@@ -12,7 +12,7 @@ set :deploy_to, "/home/#{user}/apps/#{application}"
 set :use_sudo, false
 set :deploy_via, :remote_cache
 
-set :shared_children, %w(db tmp)
+set :shared_children, %w(db tmp log)
 
 default_run_options[:pty] = true
 

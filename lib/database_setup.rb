@@ -1,7 +1,7 @@
 require 'active_record'
 require 'active_support/core_ext'
 
-dbconf = YAML::load(File.open("config/#{ENV['RACK_ENV']}.yml"))  
+dbconf = YAML::load(File.open("config/#{ENV['RACK_ENV']}.yml"))
 ActiveRecord::Base.establish_connection(dbconf)
 ActiveRecord::Base.include_root_in_json = false
 

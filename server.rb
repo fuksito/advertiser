@@ -1,4 +1,3 @@
-
 ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra'
@@ -10,7 +9,7 @@ configure do
 end
 
 get '/' do
-  erb :index 
+  erb :index
 end
 
 get '/campaigns/new' do
@@ -42,7 +41,7 @@ get '/campaigns' do
 end
 
 post '/campaigns' do
-  
+
   model = JSON.parse(params[:model])
   campaign = Campaigns.new(model)
   if campaign.save
