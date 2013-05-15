@@ -18,9 +18,9 @@ default_run_options[:pty] = true
 
 set :normalize_asset_timestamps, false # rails stuff, not needed
 
-
 set :unicorn_conf, "#{current_path}/config/unicorn.rb"
 set :unicorn_pid, "#{shared_path}/pids/unicorn.pid"
+set :rack_env, 'production'
 
 namespace :deploy do
   task :restart do
