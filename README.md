@@ -1,4 +1,7 @@
-Example Backbone/Ruby app
+Advertiser is an example Backbone/Ruby application.
+
+It allows to create campaigns, manage campaign start and end dates. 
+Manage countries and languages for each campaign.
 
 # Installation and running:
 
