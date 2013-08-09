@@ -1,6 +1,9 @@
 #!/bin/sh
 
-gem install bundler
+if ! gem list bundler | grep -q "bundler"; then
+  gem install bundler --no-ri --no-rdoc
+fi
+
 bundle install --without test
 
 (export portResult=0
@@ -8,7 +11,7 @@ while [ $portResult -eq 0 ] # lets wait until sinatra takes port
 do
   nc -z localhost 5000 1>/dev/null 2>&1; portResult=$?;
 done
-sleep 1
+sleep 3
 open "http://localhost:5000" )&
 
 bundle exec ruby ./server.rb -p 5000
